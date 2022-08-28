@@ -1,0 +1,210 @@
+### live server test
+GET http://localhost:8000
+
+# ========= Admin registraion and login
+
+### Admin user registration
+POST http://localhost:8000/api/v1/register-login
+Content-Type: application/json
+
+{
+    "fName": "Prem",
+    "lName": "Acharya",
+    "dob":  "2020-02-20",
+    "phone":"044444444",
+    "email" : "a@a1.com",
+    "password": "123456",
+    "address": "somewhere in sydeny"
+}
+
+
+### Admin user registration
+PATCH http://localhost:8000/api/v1/register-login
+Content-Type: application/json
+
+{
+    "email" : "garry@gmail.com",
+    "verificationCode" : "b264bf3c-d350-4806-bbfa-d17c0d1b1fd3"
+}
+
+### Admin login
+
+POST http://localhost:8000/api/v1/register-login/login
+Content-Type: application/json
+
+{
+    "email" : "a@a1.com",
+    "password": "aA12345"
+}
+
+
+
+
+### request opt for password reset
+POST http://localhost:8000/api/v1/register-login/otp-request
+Content-Type: application/json
+
+{
+    "email" : "a@a1.com"
+}
+
+
+### rest new password
+PATCH  http://localhost:8000/api/v1/register-login/password
+Content-Type: application/json
+
+{
+    "email" : "a@a1.com",
+    "otp": "660901",
+    "password": "123456"
+}
+
+
+### admin request new accessJWT
+GET http://localhost:8000/api/v1/admin/accessjwt
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFAYTEuY29tIiwiaWF0IjoxNjU5NzQ4MDk1LCJleHAiOjE2NjIzNDAwOTV9.wkN2TSo-O62mY_2Np2-eyh2INsgeGl2amqi8w4DvWUs
+
+
+# ============= category api
+
+### fetch categories 
+GET http://localhost:8000/api/v1/categories/
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFAYTEuY29tIiwiaWF0IjoxNjU5MjMxODMxLCJleHAiOjE2NTkyMzI3MzF9.5OmJE4PbitH_NsFoTnACxNmIIRIcKqt8B97JSdCt5Ao
+
+### post category
+POST http://localhost:8000/api/v1/categories/
+Content-Type: application/json
+
+{
+    "status": "inactive",
+    "name": "Mobile Phonesdfg",
+    "parentCatId": "62c121527362772a2d1e2316"
+    
+}
+
+### update category
+PUT http://localhost:8000/api/v1/categories/
+Content-Type: application/json
+
+{
+    "_id": "62c122254be8ca0bf044e61e",
+    "status": "active",
+    "name": "Mobile Phones",
+    "parentCatId": null
+    
+}
+
+### delete categories
+DELETE  http://localhost:8000/api/v1/categories/
+Content-Type: application/json
+
+{
+   "ids" : [
+    "62c8c544428500967742d3d9"
+   ]
+    
+}
+
+#=========== payment method api
+### fetch payment methods
+GET http://localhost:8000/api/v1/payment-method
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFAYTEuY29tIiwiaWF0IjoxNjU5NzQ3MDY3LCJleHAiOjE2NTk3NDc5Njd9.fUCHJP80ThISAp4ooUKWIi8WI2RVBzZSelcV987gATc
+
+
+### fetch payment methods
+POST  http://localhost:8000/api/v1/payment-method
+Content-Type: application/json
+
+{
+"status": "inactive",
+"name" : "Pay By Credit Card",
+"description": ""
+}
+
+
+### fetch payment methods
+PUT  http://localhost:8000/api/v1/payment-method
+Content-Type: application/json
+
+{
+ "_id": "62d201920fec230837145f66",
+"status": "active",
+"name" : "Pay By Credit Card --",
+"description": "lasjflajslfjadsl"
+}
+
+### fetch payment methods
+DELETE  http://localhost:8000/api/v1/payment-method/62d201920fec230837145f66
+
+
+# ======= admin apis
+### update password form profile page
+PATCH http://localhost:8000/api/v1/admin
+Content-Type: application/json
+
+{
+    "currentPassword" : "sfsdsdfsd",
+    "password": "lsjkfls",
+    "email" : "sjkfl@slkfdj.com"
+}
+### update admin profile 
+PUT http://localhost:8000/api/v1/admin
+Content-Type: application/json
+
+{
+   "address": "sdfsdfsd",
+"dob": "2022-07-22",
+"email": "gfd@sdf.com",
+"fName": "safdsfd",
+"lName": "sdfsdf",
+"phone": "33333",
+"currentPassword" : "sfdsf23"
+}
+
+
+# =========== Product apiss
+### Post new procuct
+POST http://localhost:8000/api/v1/products
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFAYTEuY29tIiwiaWF0IjoxNjU5NzU0Njg2LCJleHAiOjE2NTk3NTU1ODZ9.o2xzCXk9xx6pE7lrO_Xa60l-EpHTlZQTz6nLFOqYdRM
+
+{
+
+"status" : "active",
+"name": "Monbile phone kkk",
+"sku": "dsds-ss-6",
+"description": "this i an awesome product",
+"price": 444,
+"qty": 44,
+"salesPrice": 333,
+"salesStartDate": "2022-10-10",
+"salesEndDate": "2022-11-10",
+"catID": null
+}
+
+### Get all products
+
+GET http://localhost:8000/api/v1/products
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFAYTEuY29tIiwiaWF0IjoxNjU5NzU0Njg2LCJleHAiOjE2NTk3NTU1ODZ9.o2xzCXk9xx6pE7lrO_Xa60l-EpHTlZQTz6nLFOqYdRM
+
+
+
+# =========== order apis
+
+### get orders
+GET http://localhost:8000/api/v1/orders/6
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFAYS5jb20iLCJpYXQiOjE2NjA0MzIzMTMsImV4cCI6MTY2MDQzMzIxM30.WrIMivR4HsngNb5yYONp7eKvbB-ZqJleUZS6X82qMO0
+
+
+# =========== Customer apis
+
+### get orders
+GET http://localhost:8000/api/v1/customers/11e
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFAYS5jb20iLCJpYXQiOjE2NjA0NDUwNTYsImV4cCI6MTY2MDQ0NTk1Nn0.qDtDuDJ1Iowpc3Nrg2hSYz1vD4FKSTiu62dFeFUsggA
+
+
+# =========== Reviews apis
+
+### get review 
+GET http://localhost:8000/api/v1/reviews/ddd
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFAYS5jb20iLCJpYXQiOjE2NjA0NTExOTYsImV4cCI6MTY2MDQ1MjA5Nn0.7vRDMbZojdXpOEqvR3lmiJY2c8bzTVHUlThhATeLDJk
