@@ -1,10 +1,25 @@
 import './App.css';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+import Login from './Pages/Login';
+import { RegisterForm } from './Components/register/RegisterForm';
+
+
+
 
 function App() {
   return (
-    <div className="App">
-   <h1>Hello</h1>
-    </div>
+    <BrowserRouter>
+    <Routes>
+  
+   <Route path="/" element={<Login/>}/>
+   <Route path='/register' element={<RegisterForm/>}/>
+  
+    </Routes>
+    </BrowserRouter>
   );
 }
 
