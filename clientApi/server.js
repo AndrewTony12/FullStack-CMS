@@ -1,11 +1,12 @@
 import "dotenv/config";
 import express from "express";
+import mongoose from "mongoose";
 const app = express();
 import helmet from "helmet";
 import morgan from "morgan";
 import cors from "cors";
 import { mongoConnect } from "./src/Helpers/dbConfig.js";
-const PORT = process.env.PORT || 7000;
+const PORT = process.env.PORT || 8001;
 import registerRouter from "./src/Routers/registerRouter.js"
 
 //use middlewares
@@ -18,7 +19,7 @@ app.use(express.json());
 mongoConnect();
 
 // api
-app.use("api/v1/register",registerRouter)
+app.use("/api/v1/register",registerRouter)
 
 app.get("/", (req, res) => {
     res.json({
