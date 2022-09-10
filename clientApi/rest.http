@@ -1,8 +1,11 @@
 ### live server test
 GET http://localhost:8000
 
+### live server test
+GET http://localhost:8000/api/v1/register
+
 ### USER user registration
-POST http://localhost:8001/api/v1/register
+POST http://localhost:8000/api/v1/register
 Content-Type: application/json
 
 {
@@ -10,7 +13,7 @@ Content-Type: application/json
     "lName": "Acharya",
     "dob":  "2020-02-20",
     "phone":"044444444",
-    "email" : "a@a1.com",
+    "email" : "a@a.com",
     "password": "123456",
     "address": "somewhere in sydeny"
 }

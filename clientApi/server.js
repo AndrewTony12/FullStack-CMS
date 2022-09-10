@@ -5,8 +5,8 @@ const app = express();
 import helmet from "helmet";
 import morgan from "morgan";
 import cors from "cors";
-import { mongoConnect } from "./src/Helpers/dbConfig.js";
-const PORT = process.env.PORT || 8001;
+import { mongoConnect } from "./src/config/dbConfig.js";
+const PORT = process.env.PORT || 8000;
 import registerRouter from "./src/Routers/registerRouter.js"
 
 //use middlewares

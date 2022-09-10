@@ -52,13 +52,13 @@ router.post(
 
       res.json({
         status: "error",
-        message: "Unable to craete an user, please try again later.",
+        message: "Unable to create an user, please try again later.",
       });
     } catch (error) {
       if (error.message.includes("E11000 duplicate key error collection")) {
         error.status = 200;
         error.message =
-          "There is already a register user with this email, pelase login with this email or use different emal.";
+          "There is already a register user with this email, please login with this email or use different email.";
       }
       next(error);
     }
@@ -121,7 +121,7 @@ router.post("/login", loginValidation, async (req, res, next) => {
           return res.json({
             status: "error",
             message:
-              "Your account is inactive, Please check your email and follow the instruction to very the accout.",
+              "Your account is inactive, Please check your email and follow the instruction to very the account.",
           });
         }
       }
@@ -129,7 +129,7 @@ router.post("/login", loginValidation, async (req, res, next) => {
 
     res.json({
       status: "error",
-      message: "Invalid login credientials",
+      message: "Invalid login credentials",
     });
   } catch (error) {
     next(error);

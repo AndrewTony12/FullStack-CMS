@@ -68,7 +68,7 @@ router.put(
 
       res.json({
         status: "error",
-        message: "Undable to update your profile, try again latere",
+        message: "Unable to update your profile, try again later",
       });
     } catch (error) {
       next(error);
