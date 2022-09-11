@@ -10,20 +10,19 @@ route.post("/", async (req,res,next)=>{
         // console.log(req);
         console.log(req.body.password);
         // encrypt the password before sending it to database
-        req.body.password = hashPassword(req.body.password)
-console.log(req.body.password);
-const result = 0
-        // const result = await createNewUser(req.body)
-       if (result?._id) {
+        req.body.password = hashPassword(req.body.password);
+// const result = 0
+        const result = await createNewUser(req.body)
+        
+        if (result?._id) {
+         
+            console.log(result);
         res.json({
             status:"success",
             message:"Register",
             result
         })}
-        res.json({
-            status:"error",
-            message:"unsuccessful"
-        })
+       
         // console.log();
     } catch (error) {
         next(error)
