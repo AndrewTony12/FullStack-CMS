@@ -1,10 +1,11 @@
 import express from "express";
-import { createNewUser, getUserEmail } from "../Models/user/UserModel";
+import { createNewUser, getUserEmail } from "../Models/user/UserModel.js";
+import { comparePassword } from "../Helpers/bcryptHelper.js";
 
 
 const route = express.Router();
 
-route.post("/",createNewUser, async (req,res,next)=> {
+route.post("/", async (req,res,next)=> {
     try {
         const {email,password} = req.body
         const result = await getUserEmail({email})
@@ -15,7 +16,7 @@ route.post("/",createNewUser, async (req,res,next)=> {
 
             if(isMatched) {
                 return res.json({
-                    status: "Success",
+                    status: "success",
                     message: "Login Success",
                     result
                     })
