@@ -8,3 +8,7 @@ export const createNewUser = (obj) => {
 export const getUserEmail = (filter)=>{
   return UserSchema.findOne(filter);
 } 
+
+export const updateUser = (filter,obj)=>{
+  return UserSchema.findOneAndUpdate(filter,obj, {new:true})
+}

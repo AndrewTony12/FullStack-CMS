@@ -7,6 +7,7 @@ import {
 import Login from './Pages/login/Login.js';
 import { RegisterForm } from './Components/register/RegisterForm';
 import { Dashboard } from './Pages/dashboard/Dashboard';
+import { EmailVerification } from './Pages/verification/EmailVerification';
 
 
 
@@ -17,6 +18,7 @@ function App() {
     <Routes>
   
    <Route path="/" element={<Login/>}/>
+   <Route path="/admin-verification" element={<EmailVerification/>}/>
    <Route path="/dashboard" element={<Dashboard/>}/>
    <Route path='/register' element={<RegisterForm/>}/>
   

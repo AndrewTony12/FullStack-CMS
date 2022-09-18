@@ -1,6 +1,8 @@
 import express from "express"
 import { hashPassword } from "../Helpers/bcryptHelper.js";
-import { createNewUser } from "../Models/user/UserModel.js"
+import { sendEmailVerification } from "../Helpers/emailHelper..js";
+import { createNewUser, updateUser } from "../Models/user/UserModel.js"
+import {v4 as uuidv4} from "uuid"
 
 const route = express.Router()
 
@@ -12,9 +14,11 @@ route.post("/", async (req,res,next)=>{
         // encrypt the password before sending it to database
         req.body.password = hashPassword(req.body.password);
 // const result = 0
-        const result = await createNewUser(req.body)
-        
-        if (result?._id) {
+const verificationCode = uuidv4()
+req.body.verificationCode = verificationCode
+const result = await createNewUser(req.body)
+if (result?._id) {
+            sendEmailVerification(result)
          
             console.log(result);
         res.json({
@@ -41,4 +45,39 @@ route.get("/", (req,res,next)=>{
     }
 })
 
+route.patch("/", async (req,res,next)=>{
+    try {
+        const {email, verificationCode} = req.body
+        const filter = {email, verificationCode}
+        const update = {
+            status:"active",
+            verificationCode: "",
+        }
+        const result = await updateUser(filter,update)
+
+        if(result?._id){
+            res.json({
+                status:"success",
+                message:"verification complete",
+                result
+                
+            })  
+        }
+
+        res.json({
+            status:"error",
+            message:"could not verify",
+            
+        })
+
+        
+
+    } catch (error) {
+        next(error)
+    }
+
+})
+
 export default route;
+
+

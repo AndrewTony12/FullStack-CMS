@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const rootUrl = "http://localhost:8000/api/v1/register";
+const rootUrl = "http://localhost:8000";
 const loginEP = "http://localhost:8000/api/v1/login";
-const registerForm = rootUrl + "regist-form"
+const registerEP = "http://localhost:8000/api/v1/register"
 
 
 const apiProcessor = async (method, url, data ) => {
@@ -28,4 +28,9 @@ const apiProcessor = async (method, url, data ) => {
   export const loginUser = (data) => {
   
     return apiProcessor("post",loginEP,data);
+
   };
+
+  export const emailVerification = (obj)=>{
+    return apiProcessor("patch",registerEP,obj)
+  } 
