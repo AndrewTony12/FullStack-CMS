@@ -1,11 +1,11 @@
 ### live server test
-GET http://localhost:8000
+GET http://localhost:7000
 
 ### live server test
-GET http://localhost:8000/api/v1/register
+GET http://localhost:7000/api/v1/register
 
 ### USER user registration
-POST http://localhost:8000/api/v1/register
+POST http://localhost:7000/api/v1/register
 Content-Type: application/json
 
 {
@@ -19,10 +19,31 @@ Content-Type: application/json
 }
 
 ### USER user registration
-POST http://localhost:8000/api/v1/login
+POST http://localhost:7000/api/v1/login
 Content-Type: application/json
 
 {
-    "email": "a@a.com",
+    "email": "avinashandrew3@gmail.com",
     "password": "123456"
+}
+
+
+
+### USER user registration
+POST http://localhost:7000/api/v1/register/reqOtp
+Content-Type: application/json
+
+{
+    "email" :"avinashandrew3@gmail.com"
+}
+
+
+### USER user registration
+PATCH http://localhost:7000/api/v1/register/reqOtp
+Content-Type: application/json
+
+{
+    "email" :"avinashandrew3@gmail.com",
+    "password":"12345",
+    "otp": "412798"
 }

@@ -26,3 +26,27 @@ export const sendEmailVerification = async (obj) => {
     }
   );
 };
+
+export const sendOTP = async (obj) => {
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+ 
+
+  const msg = {
+    to: obj.associate, // Change to your recipient
+    from: "andydunamis3@gmail.com", // Use the email address or domain you verified above
+    subject: "OTP",
+    text: "Please see your OPT below.",
+    html: `${obj.token}`,
+  };
+  //ES6
+  sgMail.send(msg).then(
+    () => {},
+    (error) => {
+      console.error(error);
+
+      if (error.response) {
+        console.error(error.response.body);
+      }
+    }
+  );
+};

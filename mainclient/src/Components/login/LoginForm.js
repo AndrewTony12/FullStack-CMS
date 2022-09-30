@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginAction } from '../../Pages/login/loginAction';
+import { Card } from 'react-bootstrap';
 const LoginForm = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -27,7 +28,9 @@ user._id && navigate(origin)
 
   }
   return (
-    <div>
+    <div className='reg-form d-flex justify-content-center'>
+      <Card style={{ width: '18rem' }}>
+      <Card.Body>
         <Form onSubmit={handleOnSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
@@ -44,9 +47,20 @@ user._id && navigate(origin)
       </Button>
     </Form>
 
-        
-        <Link to="/register">Register</Link>
 
+        <p className='mt-3 d-flex justify-content-between'>
+          <div>
+        <Link to="/register">Register</Link>
+        </div>
+
+        <div>
+        <Link to="/resetPassword">Reset</Link>
+        </div>
+        </p>
+        
+        </Card.Body>
+    </Card>
+   
     </div>
   )
 }

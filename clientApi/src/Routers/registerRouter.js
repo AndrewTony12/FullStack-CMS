@@ -1,8 +1,10 @@
 import express from "express"
 import { hashPassword } from "../Helpers/bcryptHelper.js";
-import { sendEmailVerification } from "../Helpers/emailHelper..js";
-import { createNewUser, updateUser } from "../Models/user/UserModel.js"
+import { sendEmailVerification, sendOTP } from "../Helpers/emailHelper..js";
+import { createNewUser, getUserEmail, updateUser } from "../Models/user/UserModel.js"
 import {v4 as uuidv4} from "uuid"
+import { otpGenerator } from "../Helpers/otpGenerator.js";
+import { deleteSession, insertSession } from "../Models/session/SessionModel.js";
 
 const route = express.Router()
 
@@ -75,7 +77,58 @@ route.patch("/", async (req,res,next)=>{
     } catch (error) {
         next(error)
     }
+})
 
+route.post("/reqOtp", async (req,res,next)=>{
+    try {
+       const { email } = req.body
+       const result = await getUserEmail({email})
+       if(result?._id){
+        const otp = otpGenerator()
+        const obj = {
+            token:otp,
+            associate:email,
+            type:"updatePassword"
+        }
+        const result2 = await insertSession(obj)
+        if (result2?._id){
+            sendOTP(obj)
+          return  res.json({
+                status:"success",
+                message:"We have send OTP",
+                otp
+            })
+        }
+
+    } res.json({
+        status:"error",
+        message:"Invalid request"
+    })
+        // console.log();
+    } catch (error) {
+        next(error)
+    }
+})
+
+route.patch("/reqOtp", async (req,res,next)=>{
+    try {
+        let {email, password,otp} = req.body
+        const result = await deleteSession({
+            email,otp
+        })
+        if (result?._id) {
+            password = hashPassword(password)
+            const result2 = await updateUser({email},{password})
+            console.log(result2);
+        }
+
+
+
+        
+
+    } catch (error) {
+        next(error)
+    }
 })
 
 export default route;

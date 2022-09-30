@@ -12,7 +12,7 @@ Content-Type: application/json
     "lName": "Acharya",
     "dob":  "2020-02-20",
     "phone":"044444444",
-    "email" : "a@a1.com",
+    "email" : "avinashandrew3@gmail.com",
     "password": "123456",
     "address": "somewhere in sydeny"
 }
