@@ -28,7 +28,7 @@ import { adminAuth } from "../middlewares/authMiddleware.js";
 
 router.post(
   "/",
-  adminAuth,
+  // adminAuth,
   adminRegistrationValidation,
   async (req, res, next) => {
     try {
@@ -42,7 +42,7 @@ router.post(
 
       if (result?._id) {
         //3. unique url endpoint and sent that to customer.
-        sendAdminUserVerificationMail(result);
+        // sendAdminUserVerificationMail(result);
         return res.json({
           status: "success",
           message:
@@ -110,12 +110,12 @@ router.post("/login", loginValidation, async (req, res, next) => {
 
       if (isMatched) {
         if (result.status === "active") {
-          const tokens = await createJWTs({ email });
+          // const tokens = await createJWTs({ email });
           return res.json({
             status: "success",
             message: "Login success",
             result,
-            ...tokens,
+            // ...tokens,
           });
         } else {
           return res.json({

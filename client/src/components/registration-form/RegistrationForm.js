@@ -23,6 +23,7 @@ export const RegistrationForm = () => {
       return toast.error("Password and confirm password do not match");
     }
     const { confirmPassword, ...rest } = form;
+    console.log(form);
     const { status, message } = await postAdminUser(rest);
     console.log(status, message);
 

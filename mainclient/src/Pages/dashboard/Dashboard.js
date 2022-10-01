@@ -1,22 +1,67 @@
 import React from 'react'
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
+import { Layout } from '../layout/Layout';
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import Carousel from "react-bootstrap/Carousel";
+
+
 
 export const Dashboard = () => {
   return (
     <div>
+      <Layout>
+        <Carousel>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src="./slide1.jpeg"
+              alt="First slide"
+            />
+            <Carousel.Caption>
+              <h3>First slide label</h3>
+              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src="holder.js/800x400?text=Second slide&bg=282c34"
+              alt="Second slide"
+            />
 
-      <Navbar bg="light" variant="light">
-        <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
+            <Carousel.Caption>
+              <h3>Second slide label</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src="holder.js/800x400?text=Third slide&bg=20232a"
+              alt="Third slide"
+            />
+
+            <Carousel.Caption>
+              <h3>Third slide label</h3>
+              <p>
+                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+              </p>
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
+
+        {/* <Card style={{ width: "18rem" }}>
+          <Card.Img variant="top" src="holder.js/100px180" />
+          <Card.Body>
+            <Card.Title>Card Title</Card.Title>
+            <Card.Text>
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </Card.Text>
+            <Button variant="primary">Go somewhere</Button>
+          </Card.Body>
+        </Card> */}
+      </Layout>
     </div>
   );
 }

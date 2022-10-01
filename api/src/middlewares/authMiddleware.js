@@ -5,6 +5,7 @@ import { getSession } from "../models/session/SessionModel.js";
 export const adminAuth = async (req, res, next) => {
   try {
     const { authorization } = req.headers;
+    console.log(req.headers.authorization);
     if (authorization) {
       // is valid token
       const decoded = verifyAccessJWT(authorization);

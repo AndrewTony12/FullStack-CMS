@@ -31,7 +31,7 @@ export const LoginForm = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-
+console.log(form);
     dispatch(logonAction(form));
   };
   return (

@@ -58,7 +58,7 @@ const apiProcessor = async ({ method, url, data, privateAPI, token }) => {
   }
 };
 
-export const dtpostAdminUser = (data) => {
+export const postAdminUser = (data) => {
   const option = { method: "post", url: loginRegisterEP, data };
   return apiProcessor(option);
 };

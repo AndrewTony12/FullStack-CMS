@@ -30,10 +30,10 @@ import customerRouter from "./src/routers/customerRouter.js";
 import reviewRouter from "./src/routers/reviewRouter.js";
 
 app.use("/api/v1/register-login", registerLoginRouter);
-app.use("/api/v1/categories", adminAuth, categoryRouter);
+app.use("/api/v1/categories", categoryRouter);
 app.use("/api/v1/payment-method", adminAuth, paymentMethodRouter);
 app.use("/api/v1/admin", adminRouter);
-app.use("/api/v1/products", adminAuth, productRouter);
+app.use("/api/v1/products", productRouter);
 app.use("/api/v1/orders", adminAuth, orderRouter);
 app.use("/api/v1/customers", adminAuth, customerRouter);
 app.use("/api/v1/reviews", adminAuth, reviewRouter);
