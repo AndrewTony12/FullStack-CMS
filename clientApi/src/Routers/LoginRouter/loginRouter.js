@@ -1,6 +1,6 @@
 import express from "express";
-import { createNewUser, getUserEmail } from "../Models/user/UserModel.js";
-import { comparePassword } from "../Helpers/bcryptHelper.js";
+import { createNewUser, getUserEmail } from "../../Models/user/UserModel.js";
+import { comparePassword } from "../../Helpers/bcryptHelper.js";
 
 
 const route = express.Router();

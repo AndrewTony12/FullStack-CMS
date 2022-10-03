@@ -1,10 +1,10 @@
 import express from "express"
-import { hashPassword } from "../Helpers/bcryptHelper.js";
-import { sendEmailVerification, sendOTP } from "../Helpers/emailHelper..js";
-import { createNewUser, getUserEmail, updateUser } from "../Models/user/UserModel.js"
+
+import { createNewUser, getUserEmail, updateUser } from "../../Models/user/UserModel.js"
 import {v4 as uuidv4} from "uuid"
-import { otpGenerator } from "../Helpers/otpGenerator.js";
-import { deleteSession, insertSession } from "../Models/session/SessionModel.js";
+import { otpGenerator } from "../../Helpers/otpGenerator.js";
+import { deleteSession, insertSession } from "../../Models/session/SessionModel.js";
+import { sendEmailVerification } from "../../Helpers/emailHelper..js";
 
 const route = express.Router()
 

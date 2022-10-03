@@ -4,6 +4,7 @@ const rootUrl = "http://localhost:7000";
 const loginEP = "http://localhost:7000/api/v1/login";
 const registerEP = "http://localhost:7000/api/v1/register"
 const otpEP = "http://localhost:7000/api/v1/register/reqOtp"
+const productsEP="http://localhost:8000/api/v1/products"
 
 
 const apiProcessor = async (method, url, data ) => {
@@ -47,3 +48,7 @@ const apiProcessor = async (method, url, data ) => {
     return apiProcessor("patch",otpEP,obj);
 
   };
+
+  export const getProducts = ()=> {
+    return apiProcessor("get",productsEP)
+  }

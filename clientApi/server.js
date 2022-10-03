@@ -7,8 +7,9 @@ import morgan from "morgan";
 import cors from "cors";
 import { mongoConnect } from "./src/config/dbConfig.js";
 const PORT = process.env.PORT || 7000;
-import registerRouter from "./src/Routers/registerRouter.js"
-import loginRouter from "./src/Routers/loginRouter.js"
+import registerRouter from "./src/Routers/RegisterRouter/registerRouter.js"
+import loginRouter from "./src/Routers/LoginRouter/loginRouter.js"
+
 
 //use middlewares
 app.use(cors());
@@ -22,6 +23,7 @@ mongoConnect();
 // api
 app.use("/api/v1/register",registerRouter)
 app.use("/api/v1/login", loginRouter)
+
 
 app.get("/", (req, res) => {
     res.json({
