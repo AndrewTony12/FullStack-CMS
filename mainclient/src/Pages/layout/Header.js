@@ -6,6 +6,12 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
 export const Header = () => {
+  // const [search,setSearch] = useState([])
+
+  // const handleOnChange = (e)=>{
+  //   const {name,value}= e.target
+  //   setSearch({...search,[name]: value})
+  
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
@@ -14,7 +20,9 @@ export const Header = () => {
         {/* <Navbar.Collapse id="responsive-navbar-nav"> */}
         <InputGroup className="mt-1 w-25">
           {/* <InputGroup.Text id="basic-addon1">@</InputGroup.Text> */}
-          <Form.Control
+          <Form.Control 
+          // onChange={handleOnChange}
+          // name="search"
             placeholder="Search brands,products"
             aria-label="Username"
             aria-describedby="basic-addon1"
