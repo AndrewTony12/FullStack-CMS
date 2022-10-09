@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   // const [search,setSearch] = useState([])
@@ -15,14 +16,14 @@ export const Header = () => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="#home">Shooters</Navbar.Brand>
-        {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" /> */}
-        {/* <Navbar.Collapse id="responsive-navbar-nav"> */}
+        <Nav.Link>
+          <Link to="/dashboard#" className="links">
+            SHOOTERS
+          </Link>
+        </Nav.Link>
+
         <InputGroup className="mt-1 w-25">
-          {/* <InputGroup.Text id="basic-addon1">@</InputGroup.Text> */}
-          <Form.Control 
-          // onChange={handleOnChange}
-          // name="search"
+          <Form.Control
             placeholder="Search brands,products"
             aria-label="Username"
             aria-describedby="basic-addon1"
@@ -30,16 +31,27 @@ export const Header = () => {
         </InputGroup>
 
         <Nav className="py-1">
-          <Nav.Link href="#features">Categories</Nav.Link>
-          <Nav.Link href="#pricing">Specials</Nav.Link>
+          <Nav.Item as="li">
+            {/* <Nav.Link href="/home">Active</Nav.Link> */}
+            <Nav.Link>
+              <Link to="/products" className="links">
+                Products
+              </Link>
+            </Nav.Link>
+          </Nav.Item>
+
+          <Nav.Item as="li">
+            <Nav.Link>
+              <Link to="/categories" className="links">Category</Link>
+            </Nav.Link>
+          </Nav.Item>
+
+          <Nav.Item as="li">
+            <Nav.Link>
+              <Link to="/" className="links">Login</Link>
+            </Nav.Link>
+          </Nav.Item>
         </Nav>
-        <Nav>
-          <Nav.Link href="#deets">Login</Nav.Link>
-          <Nav.Link eventKey={2} href="#memes">
-            Contact
-          </Nav.Link>
-        </Nav>
-        {/* </Navbar.Collapse> */}
       </Container>
     </Navbar>
   );

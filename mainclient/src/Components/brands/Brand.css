@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+}
+html, body, div, img {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+
+.containers {
+     display: flex;
+     flex-wrap: wrap;
+     padding: 1rem;
+      justify-content: center;
+
+
+}
+.item {
+     margin: 2rem;
+     width: 200px;
+    height:140px;
+}
+
+img{
+    
+}
